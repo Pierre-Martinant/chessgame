@@ -3,7 +3,7 @@
 #include <stdbool.h>
 
 // Fonction pour vérifier si le déplacement de la dame est valide
-bool deplacementDame(int x1, int y1, int x2, int y2) {
+bool queenMove(int x1, int y1, int x2, int y2) {
     int dx = abs(x2 - x1);
     int dy = abs(y2 - y1);
 
@@ -14,16 +14,16 @@ bool deplacementDame(int x1, int y1, int x2, int y2) {
 int main() {
     int x1, y1, x2, y2;
 
-    printf("Entrez les coordonnées de départ de la dame (x y) : ");
+    printf("Enter the queen's starting coordinates (x y): ");
     scanf("%d %d", &x1, &y1);
 
-    printf("Entrez les coordonnées d'arrivée de la dame (x y) : ");
+    printf("Enter the queen's destination coordinates (x y): ");
     scanf("%d %d", &x2, &y2);
 
-    if (deplacementDame(x1, y1, x2, y2)) {
-        printf("Déplacement valide de la dame.\n");
+    if (queenMove(x1, y1, x2, y2)) {
+        printf("Valid queen move.\n");
     } else {
-        printf("Déplacement invalide de la dame.\n");
+        printf("Invalid queen move.\n");
     }
 
     return 0;
