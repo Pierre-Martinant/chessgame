@@ -31,4 +31,3 @@ char pieceToString(Piece piece) {
                 return '.';
     }
 }
-h
