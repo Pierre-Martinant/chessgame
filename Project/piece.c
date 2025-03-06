@@ -31,3 +31,4 @@ char pieceToString(Piece piece) {
                 return '.';
     }
 }
+zizi
