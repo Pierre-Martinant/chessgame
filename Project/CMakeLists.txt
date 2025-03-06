@@ -7,4 +7,5 @@ add_executable(Project main.c
         board.c
         piece.c
         board.h
-        piece.h)
+        piece.h
+        check.cpp)
