@@ -74,18 +74,3 @@ int isDraw(Piece **board[8][8]) {
 
     return 0;  // The game continues
 }
-
-bool checkmate(Piece board, char kingColor) {
-    // Vérifier si le roi est en échec
-    if (!ischeck(board, kingColor)) {
-        return false; // Pas d'échec, donc pas d'échec et mat
-    }
-
-    // Vérifier s'il existe un mouvement légal pour sortir de l'échec
-    if (legalmoovpossible(board, kingColor)) {
-        return false; // Un mouvement légal existe, donc pas d'échec et mat
-    }
-
-    // Aucun mouvement légal et le roi est en échec -> échec et mat
-    return true;
-}
