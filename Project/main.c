@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
+#include <stdbool.h>
 
 #include "piece.h"
 #include "board.h"
@@ -14,18 +16,15 @@ char color2[5];
 
 char players ();
 int isDraw(Piece **board[8][8]);
-void deleteplayerinfo ();
 
 int main() {
     Piece **board = generateEmptyBoard();
     //resetBoardPiece(board);
     placePiece(board, E, 8, BLACK_KING);
-    placePiece(board, E, 1, WHITE_KING);
     displayBoard(board);
     players();
     isDraw(board);
     deleteBoard(board);
-    deleteplayerinfo();
     printf("it's show %s", play1);
     return 0;
 }
@@ -36,17 +35,24 @@ char players() {
     scanf("%49s", play1);
     printf("Player 2: ");
     scanf("%49s", play2);
-    printf("black or white: ");
-    scanf("%5s", color1);
-    if (color1 == "black") {
-        char color2 = "white";
+    // Demande à l'utilisateur de choisir une couleur
+    printf("Choisissez votre couleur (black ou white) : ");
+    scanf("%5s", color1); // "%5s" pour éviter un dépassement de buffer
+
+    // Vérification et attribution de l'autre couleur
+    if (strcmp(color1, "black") == 0) {
+        strcpy(color2, "white");
     }
-    else if (color1 == "white") {
-        char color2 = "black";
+    else if (strcmp(color1, "white") == 0) {
+        strcpy(color2, "black");
     }
-    printf("%s is : %s\n", play1, color1);
-    printf("%s is : %s\n", play2, color2);
-}
+    else {
+        printf("Couleur invalide ! Veuillez entrer 'black' ou 'white'.\n");
+        return 1; // Quitte le programme avec un code d'erreur
+    }
+    printf("L'autre joueur jouera avec : %s\n", color2);
+    return 0;
+    }
 
 int isDraw(Piece **board[8][8]) {
     int WKing = 0, BKing = 0;
@@ -60,7 +66,6 @@ int isDraw(Piece **board[8][8]) {
             }
         }
     }
-
     // If one of the kings is missing, the game is a draw
     if ("R" == 0 || "r" == 0) {
         printf("One of the King is missing\n");
@@ -70,10 +75,17 @@ int isDraw(Piece **board[8][8]) {
     return 0;  // The game continues
 }
 
-void deleteplayerinfo () {
-    // Free all row before board
-    free(play1);
-    free(play2);
-    free(color1);
-    free(color2);
+bool checkmate(Piece board, char kingColor) {
+    // Vérifier si le roi est en échec
+    if (!ischeck(board, kingColor)) {
+        return false; // Pas d'échec, donc pas d'échec et mat
+    }
+
+    // Vérifier s'il existe un mouvement légal pour sortir de l'échec
+    if (legalmoovpossible(board, kingColor)) {
+        return false; // Un mouvement légal existe, donc pas d'échec et mat
+    }
+
+    // Aucun mouvement légal et le roi est en échec -> échec et mat
+    return true;
 }
