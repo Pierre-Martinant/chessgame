@@ -8,4 +8,10 @@ add_executable(Project main.c
         piece.c
         board.h
         piece.h
-        check.cpp)
+        check.cpp
+        Roidep.c
+        Reinedep.c
+        Piondep.c
+tourdep.c
+foudep.c
+)
