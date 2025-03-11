@@ -8,6 +8,15 @@
 
 #include "piece.h"
 #include "board.h"
+#include "Bishop.h"
+#include "King.h"
+#include "Rook.h"
+#include "knight.h"
+#include "pawn.h"
+#include "Queen.h"
+#include "Echec.h"
+#include "EchecetMat.h"
+
 
 char play1[50];
 char play2[50];

@@ -2,9 +2,14 @@
 // Created by cavyh on 07/03/2025.
 //
 
-bool checkmate(Piece board, char kingColor) {
+#include <stdbool.h>
+#include "piece.h"
+#include "Echec.h"
+
+
+bool checkmate(Piece** board, char kingColor) {
     // Vérifier si le roi est en échec
-    if (!ischeck(board, kingColor)) {
+    if (!isInCheck(board, kingColor)) {
         return false; // Pas d'échec, donc pas d'échec et mat
     }
 

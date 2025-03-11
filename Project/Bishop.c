@@ -2,7 +2,7 @@
 // Created by cavyh on 11/03/2025.
 //
 
-#include "bishop.h"
+#include "Bishop.h"
 #include <stdlib.h>
 
 // Implémentation de la fonction bishopMove
