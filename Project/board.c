@@ -1,7 +1,6 @@
 //
 // Created by jeanm on 24/01/2025.
 //
-
 #include "board.h"
 
 #include <stdio.h>

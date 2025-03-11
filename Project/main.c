@@ -16,16 +16,15 @@ char color2[5];
 
 char players ();
 int isDraw(Piece **board[8][8]);
+void game (Piece **board[8][8]);
 
 int main() {
     Piece **board = generateEmptyBoard();
-    //resetBoardPiece(board);
-    placePiece(board, E, 8, BLACK_KING);
+    resetBoardPiece(board);
     displayBoard(board);
     players();
-    isDraw(board);
+    game(board);
     deleteBoard(board);
-    printf("it's show %s", play1);
     return 0;
 }
 
@@ -36,7 +35,7 @@ char players() {
     printf("Player 2: ");
     scanf("%49s", play2);
     // Demande à l'utilisateur de choisir une couleur
-    printf("Choisissez votre couleur (black ou white) : ");
+    printf("Choose your color (black or white) : ");
     scanf("%5s", color1); // "%5s" pour éviter un dépassement de buffer
 
     // Vérification et attribution de l'autre couleur
@@ -47,11 +46,10 @@ char players() {
         strcpy(color2, "black");
     }
     else {
-        printf("Couleur invalide ! Veuillez entrer 'black' ou 'white'.\n");
+        printf("Invalid color! Please enter 'black' or 'white'.\n");
         return 1; // Quitte le programme avec un code d'erreur
     }
-    printf("L'autre joueur jouera avec : %s\n", color2);
-    return 0;
+    printf("The other player will play with : %s\n", color2);
     }
 
 int isDraw(Piece **board[8][8]) {
@@ -65,12 +63,23 @@ int isDraw(Piece **board[8][8]) {
                 BKing = 1;
             }
         }
+        //deleteBoard(board);
     }
     // If one of the kings is missing, the game is a draw
     if ("R" == 0 || "r" == 0) {
         printf("One of the King is missing\n");
         return 1;  // Draw
+        //deleteBoard(board);
     }
 
-    return 0;  // The game continues
+    return false;  // The game continues
+}
+
+void game (Piece **board[8][8]) {
+    while (isDraw(board) == false) {
+        printf("Player %s: %s\n", play1, color1);
+        if (color1 == "white") {
+        }
+        printf("Player %s: %s\n", play2, color2);
+    }
 }

@@ -3,15 +3,8 @@ project(Project C)
 
 set(CMAKE_C_STANDARD 11)
 
-add_executable(Project main.c
+add_executable(Projet main.c
         board.c
         piece.c
         board.h
-        piece.h
-        check.cpp
-        Roidep.c
-        Reinedep.c
-        Piondep.c
-tourdep.c
-foudep.c
-)
+        piece.h)
