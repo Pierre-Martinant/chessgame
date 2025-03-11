@@ -25,4 +25,4 @@ char columnToString(Column column);
 void resetBoardPiece(Piece **board);
 
 void displayBoard(Piece **board);
-#endif //BOARD_H
+#endif

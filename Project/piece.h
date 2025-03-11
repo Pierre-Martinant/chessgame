@@ -5,6 +5,14 @@
 #ifndef PIECE_H
 #define PIECE_H
 
+#include <stdbool.h>
+
+typedef enum {
+    WHITE,
+    BLACK,
+    NONE
+} PieceColor;
+
 typedef enum {
     EMPTY,
     WHITE_PAWN,
@@ -22,5 +30,8 @@ typedef enum {
     BLACK_ROOK,
 } Piece;
 char pieceToString(Piece piece);
+bool canAttack(Piece board[8][8], int fromX, int fromY, int toX, int toY);
+bool isInsideBoard(int x, int y);
+
 
 #endif //PIECE_H

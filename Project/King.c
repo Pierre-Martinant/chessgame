@@ -6,7 +6,7 @@
 
 #include <stdlib.h>
 
-// Implémentation de la fonction kingMove
+// Implementation of the kingMove function
 bool kingMove(int x1, int y1, int x2, int y2) {
     int dx = abs(x2 - x1);
     int dy = abs(y2 - y1);

@@ -11,4 +11,4 @@
 
 bool checkmate(Piece** board, char kingColor);
 
-#endif //ECHECETMAT_H
+#endif

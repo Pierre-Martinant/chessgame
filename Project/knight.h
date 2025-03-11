@@ -9,7 +9,6 @@
 
 #define BOARD_SIZE 8
 
-// Déclarations des fonctions pour le cavalier
 bool isValidMove(int x, int y);
 bool isKnightMoveValid(int startX, int startY, int endX, int endY);
 void printPossibleMoves(int startX, int startY);

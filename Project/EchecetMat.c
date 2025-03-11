@@ -6,18 +6,17 @@
 #include "piece.h"
 #include "Echec.h"
 
-
 bool checkmate(Piece** board, char kingColor) {
-    // Vérifier si le roi est en échec
+    // Check if the king is in check
     if (!isInCheck(board, kingColor)) {
-        return false; // Pas d'échec, donc pas d'échec et mat
+        return false; // Not in check, so not checkmate
     }
 
-    // Vérifier s'il existe un mouvement légal pour sortir de l'échec
+    // Check if there is a legal move to escape the check
     if (legalmoovpossible(board, kingColor)) {
-        return false; // Un mouvement légal existe, donc pas d'échec et mat
+        return false; // A legal move exists, so not checkmate
     }
 
-    // Aucun mouvement légal et le roi est en échec -> échec et mat
+    // No legal moves and the king is in check -> checkmate
     return true;
 }

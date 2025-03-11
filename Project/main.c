@@ -17,7 +17,6 @@
 #include "Echec.h"
 #include "EchecetMat.h"
 
-
 char play1[50];
 char play2[50];
 char color1[5];
@@ -43,11 +42,11 @@ char players() {
     scanf("%49s", play1);
     printf("Player 2: ");
     scanf("%49s", play2);
-    // Demande à l'utilisateur de choisir une couleur
+    // Ask the user to choose a color
     printf("Choose your color (black or white) : ");
-    scanf("%5s", color1); // "%5s" pour éviter un dépassement de buffer
+    scanf("%5s", color1); // "%5s" to prevent buffer overflow
 
-    // Vérification et attribution de l'autre couleur
+    // Check and assign the other color
     if (strcmp(color1, "black") == 0) {
         strcpy(color2, "white");
     }
@@ -56,9 +55,9 @@ char players() {
     }
     else {
         printf("Invalid color! Please enter 'black' or 'white'.\n");
-        return 1; // Quitte le programme avec un code d'erreur
+        return 1; // Exit the program with an error code
     }
-    printf("The other player will play with : %s\n", color2);
+    printf("The other player will play with: %s\n", color2);
     }
 
 int isDraw(Piece **board[8][8]) {
@@ -76,7 +75,7 @@ int isDraw(Piece **board[8][8]) {
     }
     // If one of the kings is missing, the game is a draw
     if ("R" == 0 || "r" == 0) {
-        printf("One of the King is missing\n");
+        printf("One of the Kings is missing\n");
         return 1;  // Draw
         //deleteBoard(board);
     }

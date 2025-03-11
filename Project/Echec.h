@@ -10,4 +10,4 @@
 
 bool isInCheck(Piece** board[8][8], char kingColor);
 
-#endif //ECHEC_H
+#endif

@@ -5,7 +5,7 @@
 #include "Bishop.h"
 #include <stdlib.h>
 
-// Implémentation de la fonction bishopMove
+// Implementation of the bishopMove function
 bool bishopMove(int x1, int y1, int x2, int y2) {
     int dx = abs(x2 - x1);
     int dy = abs(y2 - y1);
