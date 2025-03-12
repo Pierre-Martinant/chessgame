@@ -7,11 +7,6 @@
 
 #include <stdbool.h>
 
-typedef enum {
-    WHITE,
-    BLACK,
-    NONE
-} PieceColor;
 
 typedef enum {
     EMPTY,
@@ -30,7 +25,7 @@ typedef enum {
     BLACK_ROOK,
 } Piece;
 char pieceToString(Piece piece);
-bool canAttack(Piece board[8][8], int fromX, int fromY, int toX, int toY);
+bool canAttack(Piece** board[8][8], int fromX, int fromY, int toX, int toY);
 bool isInsideBoard(int x, int y);
 
 

@@ -10,7 +10,7 @@ bool isInCheck(Piece** board[8][8], char kingColor) {
     // Locate the king on the board
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
-            if (board[i][j].type == 'K' && board[i][j].color == kingColor) {
+            if (Piece** board[i][j] = 'K' && Piece** board[i][j] = 'k') {
                 kingX = i;
                 kingY = j;
                 break;
@@ -26,7 +26,7 @@ bool isInCheck(Piece** board[8][8], char kingColor) {
     // Check if any opposing piece can attack the king
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
-            if (board[i][j].color != kingColor && board[i][j].color != ' ') {
+            if (Piece** board[i][j] = && Piece** board[i][j] != ' ') {
                 if ((board, i, j, kingX, kingY)) {
                     return true;
                 }

@@ -21,6 +21,7 @@ char play1[50];
 char play2[50];
 char color1[5];
 char color2[5];
+int turns = 0;
 
 char players ();
 int isDraw(Piece **board[8][8]);
@@ -84,10 +85,23 @@ int isDraw(Piece **board[8][8]) {
 }
 
 void game (Piece **board[8][8]) {
-    while (isDraw(board) == false) {
-        printf("Player %s: %s\n", play1, color1);
-        if (color1 == "white") {
+    for (int i = 0; i < 8; i++) {
+        char beginning = 0;
+        char end = 0;
+        if (strcmp(color1, "white") == 0) {
+            printf("It's %s (%s) turn\n", play1, color1);
+            printf("tell coordinates (ex: c1 d5)");
+            scanf("%s %s", beginning, end);
         }
-        printf("Player %s: %s\n", play2, color2);
+        else {
+            printf("It's %s (%s) turn\n", play2, color2);
+            printf("tell coordinates (ex: c1 d5)");
+            scanf("%s %s", beginning, end);
+        }
     }
+}
+
+char turn (beginning, end) {
+
+    return 1;
 }
