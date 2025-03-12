@@ -8,6 +8,7 @@
 #include <stdbool.h>
 #include "piece.h"
 
+bool isAttacking(Piece board[8][8], int i, int j, int kingX, int kingY);
 bool isInCheck(Piece** board[8][8], char kingColor);
 
 #endif

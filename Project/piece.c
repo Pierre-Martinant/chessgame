@@ -1,7 +1,12 @@
+//
+// Created by cavyh on 11/03/2025.
+//
+
 #include "piece.h"
 #include <stdbool.h>
 #include <stdlib.h>
 
+// Function to get a character representation of a piece
 char pieceToString(Piece piece) {
     switch (piece) {
         case WHITE_PAWN:
@@ -34,85 +39,7 @@ char pieceToString(Piece piece) {
     }
 }
 
-// Vérifie si une case est dans les limites du plateau
+// Checks if a position is within the board limits
 bool isInsideBoard(int x, int y) {
     return x >= 0 && x < 8 && y >= 0 && y < 8;
-}
-
-// Fonction pour vérifier si une pièce peut attaquer une autre
-bool canAttack(Piece** board[8][8], int fromX, int fromY, int toX, int toY) {
-    Piece** piece = board[fromX][fromY];
-
-    switch (Piece **piece) {
-        case 'K': // Roi
-            return (abs(fromX - toX) <= 1 && abs(fromY - toY) <= 1);
-
-        case 'Q': // Reine
-            if (fromX == toX || fromY == toY) { // Mouvement horizontal ou vertical
-                for (int i = 1; i < abs(fromX - toX) || i < abs(fromY - toY); i++) {
-                    if (board[fromX + i * ((toX - fromX) > 0 ? 1 : -1)][fromY + i * ((toY - fromY) > 0 ? 1 : -1)].type != ' ') {
-                        return false;
-                    }
-                }
-                return true;
-            } else if (abs(fromX - toX) == abs(fromY - toY)) { // Diagonale
-                for (int i = 1; i < abs(fromX - toX); i++) {
-                    if (board[fromX + i * ((toX - fromX) > 0 ? 1 : -1)][fromY + i * ((toY - fromY) > 0 ? 1 : -1)].type != ' ') {
-                        return false;
-                    }
-                }
-                return true;
-            }
-            break;
-
-        case 'R': // Tour
-            if (fromX == toX) { // Mouvement vertical
-                for (int i = 1; i < abs(fromY - toY); i++) {
-                    if (board[fromX][fromY + i * ((toY - fromY) > 0 ? 1 : -1)].type != ' ') {
-                        return false;
-                    }
-                }
-                return true;
-            } else if (fromY == toY) { // Mouvement horizontal
-                for (int i = 1; i < abs(fromX - toX); i++) {
-                    if (board[fromX + i * ((toX - fromX) > 0 ? 1 : -1)][fromY].type != ' ') {
-                        return false;
-                    }
-                }
-                return true;
-            }
-            break;
-
-        case 'B': // Fou
-            if (abs(fromX - toX) == abs(fromY - toY)) { // Diagonale
-                for (int i = 1; i < abs(fromX - toX); i++) {
-                    if (board[fromX + i * ((toX - fromX) > 0 ? 1 : -1)][fromY + i * ((toY - fromY) > 0 ? 1 : -1)].type != ' ') {
-                        return false;
-                    }
-                }
-                return true;
-            }
-            break;
-
-        case 'N': // Cavalier
-            if ((abs(fromX - toX) == 2 && abs(fromY - toY) == 1) || (abs(fromX - toX) == 1 && abs(fromY - toY) == 2)) {
-                return true;
-            }
-            break;
-
-        case 'P': // Pion
-            // Les pions attaquent en diagonale d'une case devant eux
-            if (Piece *piece = 'P' && fromX - toX == 1 && abs(fromY - toY) == 1) {
-                return true;
-            }
-            if ( Piece *piece = 'p' && toX - fromX == 1 && abs(fromY - toY) == 1) {
-                return true;
-            }
-            break;
-
-        default:
-            return false; // Cas non pris en charge
-    }
-
-    return false;
 }

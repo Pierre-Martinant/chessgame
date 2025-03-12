@@ -8,14 +8,7 @@
 
 #include "piece.h"
 #include "board.h"
-#include "Bishop.h"
-#include "King.h"
-#include "Rook.h"
-#include "knight.h"
-#include "pawn.h"
-#include "Queen.h"
-#include "Echec.h"
-#include "EchecetMat.h"
+#include "moves.h"
 
 char play1[50];
 char play2[50];
@@ -100,8 +93,7 @@ void game (Piece **board[8][8]) {
         }
     }
 }
-
-char turn (beginning, end) {
-
+char turn(char beginning, char end) {
     return 1;
 }
+

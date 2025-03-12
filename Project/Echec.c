@@ -1,38 +1,37 @@
-//
-// Created by cavyh on 07/03/2025.
-//
-#include <stdbool.h>
 #include "piece.h"
 
-bool isInCheck(Piece** board[8][8], char kingColor) {
+
+bool isInCheck(Piece board[8][8], char kingColor) {
     int kingX = -1, kingY = -1;
 
-    // Locate the king on the board
+    // Localiser la position du roi
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
-            if (Piece** board[i][j] = 'K' && Piece** board[i][j] = 'k') {
+            if ((kingColor == 'W' && board[i][j] == WHITE_KING) ||
+                (kingColor == 'B' && board[i][j] == BLACK_KING)) {
                 kingX = i;
                 kingY = j;
-                break;
-            }
+                break; // Le roi est trouvé
+                }
         }
+        if (kingX != -1) break; // Sortir pour éviter une double vérification inutile
     }
 
-    // If the king is not found, return false
+    // Si le roi n'a pas été trouvé
     if (kingX == -1 || kingY == -1) {
-        return false;
+        return false; // Roi introuvable — aucune "Échec" détectée
     }
 
-    // Check if any opposing piece can attack the king
+    // Vérifier si une pièce adverse attaque le roi
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
-            if (Piece** board[i][j] = && Piece** board[i][j] != ' ') {
-                if ((board, i, j, kingX, kingY)) {
-                    return true;
+            if (board[i][j] != EMPTY) { // Si la case contient une pièce
+                if (isAttacking(board, i, j, kingX, kingY)) {
+                    return true; // Pièce adverse attaque le roi
                 }
             }
         }
     }
 
-    return false;
+    return false; // Pas de pièces qui attaquent le roi
 }
